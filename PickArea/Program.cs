@@ -100,7 +100,7 @@ namespace PickArea
 
             foreach (var obj in lstSource)
             {
-                lstSql.Add(string.Format("insert into region (id,pid,level,name,pinyin,) values({0},{1},{2},'{3}','{4}','{5}','{6}');", obj.ID, obj.PID, obj.Level, obj.Name,obj.PinYin,obj.ShortPinYin,obj.First));
+                lstSql.Add(string.Format("insert into region (id,pid,level,name,pinyin,jianpin,first) values({0},{1},{2},'{3}','{4}','{5}','{6}');", obj.ID, obj.PID, obj.Level, obj.Name,obj.PinYin,obj.ShortPinYin,obj.First));
             }
 
             var result = AppDomain.CurrentDomain.BaseDirectory + "\\last.txt";
