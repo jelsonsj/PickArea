@@ -91,7 +91,7 @@ namespace PickArea
                         }
                     }
                 }
-                region.PinYin = NPinyin.Pinyin.GetPinyin(region.Name);
+                region.PinYin = System.Text.RegularExpressions.Regex.Replace(NPinyin.Pinyin.GetPinyin(region.Name), @"\s+", "");
                 region.ShortPinYin = NPinyin.Pinyin.GetInitials(region.Name);
                 region.First = region.ShortPinYin[0];
             }
@@ -100,7 +100,7 @@ namespace PickArea
 
             foreach (var obj in lstSource)
             {
-                lstSql.Add(string.Format("insert into region (id,pid,level,name) values({0},{1},{2},'{3}');", obj.ID, obj.PID, obj.Level, obj.Name));
+                lstSql.Add(string.Format("insert into region (id,pid,level,name,pinyin,) values({0},{1},{2},'{3}','{4}','{5}','{6}');", obj.ID, obj.PID, obj.Level, obj.Name,obj.PinYin,obj.ShortPinYin,obj.First));
             }
 
             var result = AppDomain.CurrentDomain.BaseDirectory + "\\last.txt";
